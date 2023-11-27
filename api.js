@@ -3,6 +3,7 @@
 const personalKey = "prod";
 const baseHost = "https://webdev-hw-api.vercel.app";
 const postsHost = `${baseHost}/api/v1/${personalKey}/instapro`;
+const ApiGet = "https://wedev-api.sky.pro/api/v1/prod/instapro";
 
 export function getPosts({ token }) {
   return fetch(postsHost, {
@@ -58,9 +59,10 @@ export function loginUser({ login, password }) {
 
 // Загружает картинку в облако, возвращает url загруженной картинки
 export function uploadImage({ file }) {
+  console.log(file);
   const data = new FormData();
   data.append("file", file);
-
+console.log(data);
   return fetch(baseHost + "/api/upload/image", {
     method: "POST",
     body: data,
@@ -68,3 +70,14 @@ export function uploadImage({ file }) {
     return response.json();
   });
 }
+
+//Интегрировать верстку списка постов с API.
+//Реализация api
+// export function apiIntegrationGet() {
+//   return fetch(ApiGet, {
+//     method: "GET",
+//   }).then((response) => {
+//     // console.log(response);
+//     return response.json();
+//   });
+// }
