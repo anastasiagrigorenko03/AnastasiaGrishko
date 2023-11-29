@@ -4,7 +4,7 @@ const personalKey = "prod";
 const baseHost = "https://webdev-hw-api.vercel.app";
 const postsHost = `${baseHost}/api/v1/${personalKey}/instapro`;
 const ApiGet = "https://wedev-api.sky.pro/api/v1/prod/instapro";
-
+// prod;
 export function getPosts({ token }) {
   return fetch(postsHost, {
     method: "GET",
@@ -62,7 +62,7 @@ export function uploadImage({ file }) {
   console.log(file);
   const data = new FormData();
   data.append("file", file);
-console.log(data);
+  console.log(data);
   return fetch(baseHost + "/api/upload/image", {
     method: "POST",
     body: data,
@@ -70,7 +70,25 @@ console.log(data);
     return response.json();
   });
 }
-
+//
+export function addPost({ token, description, imageUrl }) {
+  return fetch(postsHost, {
+    body: JSON.stringify({
+      description,
+      imageUrl,
+    }),
+    headers: {
+      Authorization: token,
+    },
+  }).then((response) => {
+    if (response.status === 500) {
+      throw new Error("Ошибка сервера");
+    }
+    if (response.status === 400) {
+      throw new Error("Неверный запрос");
+    }
+  });
+}
 //Интегрировать верстку списка постов с API.
 //Реализация api
 // export function apiIntegrationGet() {

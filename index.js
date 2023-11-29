@@ -112,8 +112,14 @@ const renderApp = () => {
       appEl,
       onAddPostClick({ description, imageUrl }) {
         // TODO: реализовать добавление поста в API
+        goToPage(LOADING_PAGE)
         console.log("Добавляю пост...", { description, imageUrl });
         goToPage(POSTS_PAGE);
+        // Выззвать адд_пост
+        //Передаю обхекты токен дексри и имаг
+        // токен получить 
+        // если запрос выполняет успешно вызывать then и на 117 строке вызвать.
+        
       },
     });
   }
