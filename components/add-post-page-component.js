@@ -35,7 +35,7 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
       element: appEl.querySelector(".upload-image-container"),
       onImageUrlChange(newImageUrl) {
         imageUrl = newImageUrl;
-        console.log(newImageUrl)
+        console.log(newImageUrl);
       },
     });
 
@@ -59,12 +59,25 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
         alert("Напишите описание фотографии");
         return;
       }
+      function sanitizeText(text) {
+        return text
+          .replace(/<[^>]*>/g, "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;");
+      }
+      const sanitizedDescription = sanitizeText(areaText.value);
       onAddPostClick({
-        description: areaText.value,
         imageUrl: imageUrl,
+        description: sanitizedDescription,
       });
     });
   };
 
   render();
 }
+
+{
+  /* <a href="https://learn.javascript.ru/">НаЖми!</a>; */
+}
+//  <a href="https://learn.javascript.ru/">НаЖми!</a>;
