@@ -57,9 +57,9 @@ export function renderUserPostPageComponent({ appEl }) {
               <div class="page-container">
                 <div class="header-container">
                 </div>
-                  <div class="post-header post-user" data-user-id="${user.id}">
-            <img src="${user.imageUrl}" class="post-header__user-image post-user">
-            <p class="post-header__user-name post-user">${user.name}</p>
+                  <div class="post-header post-user" data-user-id="${posts[0].user.id}">
+            <img src="${posts[0].user.imageUrl}" class="post-header__user-image post-user">
+            <p class="post-header__user-name ">${posts[0].user.name}</p>
              </div>
                 <ul class="posts">
                   ${renderPosts}
