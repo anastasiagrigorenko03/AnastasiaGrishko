@@ -1,6 +1,7 @@
 // Замени на свой, чтобы получить независимый от других набор данных.
 // "боевая" версия инстапро лежит в ключе prod
-const personalKey = "yaroslav";
+// const personalKey = "yaroslav";
+const personalKey = "anastasia";
 const baseHost = "https://webdev-hw-api.vercel.app";
 const postsHost = `${baseHost}/api/v1/${personalKey}/instapro`;
 const ApiGet = "https://wedev-api.sky.pro/api/v1/prod/instapro";
@@ -111,34 +112,32 @@ export function getUserPosts({ token, id }) {
 }
 
 //Лайки
-export function addLike({ id, token }) { 
-  return fetch(postsHost + `/${id}/like`, {  
-    method: "POST", 
-    headers: { 
-      Authorization: token, 
-    }, 
-  }) 
-    .then((response) => { 
-      if (response.status === 401) { 
-        throw new Error("Нет авторизации"); 
-      } 
- 
-      return response.json(); 
-    }) 
+export function addLike({ id, token }) {
+  return fetch(postsHost + `/${id}/like`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+    },
+  }).then((response) => {
+    if (response.status === 401) {
+      throw new Error("Нет авторизации");
+    }
+
+    return response.json();
+  });
 }
 // ДизЛайк
-export function addDislike({ id, token }) { 
-  return fetch(postsHost + `/${id}/dislike`, {  
-    method: "POST", 
-    headers: { 
-      Authorization: token, 
-    }, 
-  }) 
-    .then((response) => { 
-      if (response.status === 401) { 
-        throw new Error("Нет авторизации"); 
-      } 
- 
-      return response.json(); 
-    }) 
+export function addDislike({ id, token }) {
+  return fetch(postsHost + `/${id}/dislike`, {
+    method: "POST",
+    headers: {
+      Authorization: token,
+    },
+  }).then((response) => {
+    if (response.status === 401) {
+      throw new Error("Нет авторизации");
+    }
+
+    return response.json();
+  });
 }
